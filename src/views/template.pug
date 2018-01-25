@@ -1,0 +1,35 @@
+extends partials/layout.pug
+block metatags
+  title= title
+  meta(name="description", content=description)
+block content
+  main.todo
+    h1.todo__title=title
+    header.todo__header
+      input(type="text", class="todo__input", placeholder="What needs to be done?")
+    
+    ul.todo__list
+      li.todo__list__item
+        input(type="checkbox", name="todo1", id="todo1", class="todo__list__item__checkbox")
+        label(contenteditable="true") Todo  task 1
+        button.todo__list__item__destroy X
+      li.todo__list__item
+        input(type="checkbox", name="todo2", id="todo2", class="todo__list__item__checkbox")
+        label(contenteditable="true") Todo  task 2 dssfsfsdfsf
+        button.todo__list__item__destroy X
+      li.todo__list__item
+        input(type="checkbox", name="todo3", id="todo3", class="todo__list__item__checkbox")
+        label(contenteditable="true") Todo  task 3
+        button.todo__list__item__destroy X
+      li.todo__list__item
+        input(type="checkbox", name="todo4", id="todo4", class="todo__list__item__checkbox" checked)
+        label(contenteditable="true") Todo  task 4
+        button.todo__list__item__destroy X
+
+    footer.todo__footer
+      p.todo__left 3 items left
+      div.todo__filter
+        button.todo__filter__btn All
+        button.todo__filter__btn Active
+        button.todo__filter__btn Completed
+

@@ -1,0 +1,69 @@
+html {
+
+  @include fluid-type ('font-size', $minScreen, $maxScreen, $minFont, $maxFont);
+}
+
+
+
+body {
+  text-rendering: optimizeLegibility;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  color: $body-text-color;
+}
+
+p, ul, ol, dl, figure,
+blockquote, table, hr, details, fieldset, label, legend, form {
+  line-height: $baseline;
+  margin-bottom: $baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  color: $headings-color;
+  margin-bottom: $baseline;
+}
+
+
+
+h1 {
+  font-size: $h1;
+  line-height: $h1;
+  margin-top: $baseline - $h1 + ($baseline * 2);
+}
+
+h2 {
+  font-size: $h2;
+  line-height: $h2;
+  margin-top: $baseline - $h2 + ($baseline * 2);
+}
+
+h3 {
+  font-size: $h3;
+  line-height: $h3;
+  margin-top: $baseline - $h3 + ($baseline * 2);
+}
+
+h4 {
+  font-size: $h4;
+  line-height: $h4;
+  margin-top: $baseline - $h4 + ($baseline * 2);
+}
+
+h5 {
+  font-size: $h5;
+  line-height: $h5;
+  margin-top: $baseline - $h5 + ($baseline * 2);
+}
+
+h6 {
+  font-size: $h6;
+  line-height: $h6;
+  margin-top: $baseline - $h6 + ($baseline * 2);
+}

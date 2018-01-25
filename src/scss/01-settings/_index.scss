@@ -1,0 +1,86 @@
+// Colors Settings
+
+// put here a pallete of colors
+
+$red-light: #EE4938;
+$red: #FF0000;
+$red-pastel: #FF8181;
+$green-grey: #E1ECDF;
+$blue: #3A3C83;
+$orange-light: #FAEBD2;
+$orange-pastel: #FFA141;
+$pink: #F32ED4;
+
+$black: #242424;
+$dark-grey: #4A4A4A;
+$mid-grey: #9B9B9B;
+$light-grey: #E2E2E2;
+
+
+// Principal colors
+$color-initial: #fff !default;
+$color-primary: $blue !default;
+$color-secondary: $red-light !default;
+$color-tertiary: $orange-light !default;
+$color-quaternary: #d1d1d1 !default;
+$color-quinary: #e1e1e1 !default;
+
+$social-hover-color: $red-pastel;
+
+$body-bg-color: $light-grey;
+
+// Typography settings
+
+// Biorhyme 300, 800
+// Montserrat 300, 500
+
+$biorhyme: 'BioRhyme', serif;
+$montserrat: 'Montserrat', sans-serif;
+
+$light-weight: 300;
+$medium-weight: 500;
+$bold-weight: 800;
+
+$ratio: 1.2;
+
+$baseline: 1.4rem;
+
+$basefont: 1rem;
+
+$minScreen: 20rem;
+$maxScreen: 50rem;
+$minFont: 1rem;
+$maxFont: 1.2rem;
+
+
+
+$h1: $basefont * $ratio * $ratio * $ratio * $ratio * $ratio * $ratio;
+$h2: $basefont * $ratio * $ratio * $ratio * $ratio;
+$h3: $basefont * $ratio * $ratio * $ratio;
+$h4: $basefont * $ratio * $ratio;
+$h5: $basefont * $ratio;
+$h6: $basefont;
+
+
+$body-font-family: $montserrat;
+$headings-font-family: $biorhyme;
+
+$body-font-weight: $light-weight;
+$headings-font-weight: $bold-weight;
+
+$body-text-color: $black;
+$headings-color: $black;
+
+$link-color: $black;
+$link-color-hover: $red;
+$link-color-visited: $red;
+$link-color-active: $red;
+
+
+// Spacing
+
+$spacing__s: 1rem;
+$spacing__m: 2rem;
+$spacing__l: 4rem;
+$spacing__xl: 8rem;
+$gutter-width: $baseline;

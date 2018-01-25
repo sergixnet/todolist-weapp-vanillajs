@@ -1,0 +1,11 @@
+extends partials/layout.pug
+block metatags
+  title= title
+  meta(name="description", content=description)
+block content
+  main.app
+    h1=title
+    p=description
+    img(src="./images/desktop.jpg", alt="sample image", width="600")
+    p.
+      Image by <a href="https://quotecatalog.com/">www.quotecatalog.com</a>

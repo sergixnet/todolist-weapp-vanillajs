@@ -1,0 +1,34 @@
+{
+  "name": "todolist-webapp-vanillajs",
+  "version": "1.0.0",
+  "description": "Another todo list application",
+  "main": "package.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon --watch src -e pug,scss,js,json --exec babel-node server.js",
+    "watchify": "watchify ./src/js/index.js -d -o ./public/script.js -t [ babelify --presets [env] ] -v",
+    "browserify": "browserify ./src/js/index.js -d -o ./public/script.js -t [ babelify --presets [env] ]",
+    "uglify": "uglifyjs ./public/script.js -c -o ./public/script.js",
+    "start": "npm run watchify | npm run serve",
+    "build": "npm run browserify && npm run uglify && babel-node server.js"
+  },
+  "author": "Sergio Peña <sergiop79@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ack-reload": "^2.0.12",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
+    "express-autoprefixer": "^5.3.0",
+    "node-sass-middleware": "^0.11.0",
+    "nodemon": "^1.14.11",
+    "pug": "^2.0.0-rc.4",
+    "serve-favicon": "^2.4.5",
+    "uglifyjs": "^2.4.11",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
