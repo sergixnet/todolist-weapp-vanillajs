@@ -3,9 +3,18 @@ block metatags
   title= title
   meta(name="description", content=description)
 block content
-  main.app
-    h1=title
-    p=description
-    img(src="./images/desktop.jpg", alt="sample image", width="600")
-    p.
-      Image by <a href="https://quotecatalog.com/">www.quotecatalog.com</a>
+  main.todo
+    h1.todo__title=title
+    header.todo__header
+      input(type="text", class="todo__input", id="todo-input" placeholder="What needs to be done?")
+    
+    ul.todo__list#todo-list
+      
+
+    footer.todo__footer.is-hidden#footer
+      p.todo__left 3 items left
+      div.todo__filter
+        button.todo__filter__btn All
+        button.todo__filter__btn Active
+        button.todo__filter__btn Completed
+

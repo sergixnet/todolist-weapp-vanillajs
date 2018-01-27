@@ -5,8 +5,8 @@ const routes = express.Router()
 routes
   .get('/', (req, res, next) => {
     res.render('index', {
-      title: 'Home page',
-      description: 'This is the home page description'
+      title: 'todos',
+      description: 'Todo List web app with vanilla JS'
     })
   })
   .get('/template', (req, res, next) => {
