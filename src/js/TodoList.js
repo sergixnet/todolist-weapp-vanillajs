@@ -18,6 +18,7 @@ export default class TodoList {
     this.editTodoItem = this.editTodoItem.bind(this)
     this.renderTodoItem = this.renderTodoItem.bind(this)
     this.render = this.render.bind(this)
+    this.completed = this.completed.bind(this)
   }
 
   addTodoItem (e) {
@@ -63,7 +64,6 @@ export default class TodoList {
         todoCollection[toEdit].name = e.target.textContent
         ls.setItem(this.key, j.stringify(todoCollection))
         e.target.blur()
-        c(e.target.textContent)
       }
 
       label.addEventListener('blur', e => saveTask(e))
@@ -75,7 +75,7 @@ export default class TodoList {
   renderTodoItem (item) {
     let template = `
       <li class="todo__list__item" id="${item.id}">
-        <input class="todo__list__item__checkbox" name="todo1" data-id="${item.id}" type="checkbox"><label contenteditable="true">${item.name}</label><button class="todo__list__item__destroy" data-id="${item.id}">X</button>
+        <input class="todo__list__item__checkbox" name="todo1" data-id="${item.id}" type="checkbox" ${item.isComplete ? 'checked' : ''}><label ${item.isComplete ? 'class="completed"' : 'contenteditable="true"'}>${item.name}</label><button class="todo__list__item__destroy" data-id="${item.id}">X</button>
       </li>
     `
     const list = d.querySelector('#todo-list')
@@ -90,6 +90,7 @@ export default class TodoList {
     todoInput.addEventListener('keyup', this.addTodoItem)
     todoItems.addEventListener('click', this.removeTodoItem)
     todoItems.addEventListener('click', this.editTodoItem)
+    todoItems.addEventListener('click', this.completed)
 
     this.showFooter()
     this.itemsLeft()
@@ -106,8 +107,32 @@ export default class TodoList {
   itemsLeft () {
     let toComplete = j.parse(ls.getItem(this.key))
       .filter(item => !item.isComplete).length
-    const text = `${toComplete} item${toComplete > 1 ? 's' : ''} left`
-    c(text)
+    const text = `${toComplete} item${toComplete === 1 ? '' : 's'} left`
     d.querySelector('.todo__left').textContent = text
+  }
+
+  completed (e) {
+    if (e.target.localName === 'input') {
+      const todoCollection = j.parse(ls.getItem(this.key))
+      let input = e.target
+      let label = input.nextSibling
+      let id = input.dataset.id
+      let toEdit = todoCollection.findIndex(task => task.id.toString() === id)
+
+      todoCollection[toEdit].isComplete = input.checked
+
+      if (input.checked) {
+        label.classList.add('completed')
+        label.removeAttribute('contenteditable')
+      } else {
+        label.classList.remove('completed')
+        label.setAttribute('contenteditable', true)
+      }
+
+      ls.setItem(this.key, j.stringify(todoCollection))
+
+      this.showFooter()
+      this.itemsLeft()
+    }
   }
 }

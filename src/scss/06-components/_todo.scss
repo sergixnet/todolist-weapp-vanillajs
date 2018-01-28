@@ -43,6 +43,10 @@ body {
 
   label {
     margin: 0 0 0 1rem;
+    &.completed {
+      text-decoration: line-through;
+      font-style: italic;
+    }
   }
 }
 
