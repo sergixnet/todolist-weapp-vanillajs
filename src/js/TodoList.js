@@ -36,6 +36,7 @@ export default class TodoList {
       this.renderTodoItem(newTodoItem)
       e.target.value = null
       this.showFooter()
+      this.itemsLeft()
     }
   }
 
@@ -46,6 +47,7 @@ export default class TodoList {
       ls.setItem(this.key, j.stringify(todoCollection))
       e.target.parentElement.remove()
       this.showFooter()
+      this.itemsLeft()
     }
   }
 
@@ -90,6 +92,7 @@ export default class TodoList {
     todoItems.addEventListener('click', this.editTodoItem)
 
     this.showFooter()
+    this.itemsLeft()
   }
 
   showFooter () {
@@ -98,5 +101,13 @@ export default class TodoList {
     } else {
       footer.classList.add('is-hidden')
     }
+  }
+
+  itemsLeft () {
+    let toComplete = j.parse(ls.getItem(this.key))
+      .filter(item => !item.isComplete).length
+    const text = `${toComplete} item${toComplete > 1 ? 's' : ''} left`
+    c(text)
+    d.querySelector('.todo__left').textContent = text
   }
 }
