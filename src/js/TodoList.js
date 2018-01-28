@@ -19,6 +19,9 @@ export default class TodoList {
     this.renderTodoItem = this.renderTodoItem.bind(this)
     this.render = this.render.bind(this)
     this.completed = this.completed.bind(this)
+    this.filterCompleted = this.filterCompleted.bind(this)
+    this.filterActive = this.filterActive.bind(this)
+    this.filterAll = this.filterAll.bind(this)
   }
 
   addTodoItem (e) {
@@ -91,6 +94,10 @@ export default class TodoList {
     todoItems.addEventListener('click', this.removeTodoItem)
     todoItems.addEventListener('click', this.editTodoItem)
     todoItems.addEventListener('click', this.completed)
+    footer.addEventListener('click', this.filterCompleted)
+    footer.addEventListener('click', this.filterActive)
+    footer.addEventListener('click', this.filterAll)
+    footer.addEventListener('click', this.toggleActive)
 
     this.showFooter()
     this.itemsLeft()
@@ -120,6 +127,7 @@ export default class TodoList {
       let toEdit = todoCollection.findIndex(task => task.id.toString() === id)
 
       todoCollection[toEdit].isComplete = input.checked
+      todoCollection[toEdit].isActive = !input.checked
 
       if (input.checked) {
         label.classList.add('completed')
@@ -133,6 +141,45 @@ export default class TodoList {
 
       this.showFooter()
       this.itemsLeft()
+    }
+  }
+
+  filterCompleted (e) {
+    if (e.target.id === 'completed') {
+      let todoCollection = j.parse(ls.getItem(this.key)).filter(item => item.isComplete)
+      todoItems.innerHTML = null
+      todoCollection.forEach(item => this.renderTodoItem(item))
+      this.showFooter()
+      this.itemsLeft()
+    }
+  }
+
+  filterActive (e) {
+    if (e.target.id === 'active') {
+      let todoCollection = j.parse(ls.getItem(this.key)).filter(item => item.isActive)
+      todoItems.innerHTML = null
+      todoCollection.forEach(item => this.renderTodoItem(item))
+      this.showFooter()
+      this.itemsLeft()
+    }
+  }
+
+  filterAll (e) {
+    if (e.target.id === 'all') {
+      let todoCollection = j.parse(ls.getItem(this.key))
+      todoItems.innerHTML = null
+      todoCollection.forEach(item => this.renderTodoItem(item))
+      this.showFooter()
+      this.itemsLeft()
+    }
+  }
+
+  toggleActive (e) {
+    if (e.target.classList.contains('todo__filter__btn')) {
+      c(e.target.textContent)
+      d.querySelectorAll('.todo__filter__btn')
+        .forEach(button => button.classList.remove('todo__filter__btn--active'))
+      e.target.classList.add('todo__filter__btn--active')
     }
   }
 }
