@@ -22,13 +22,16 @@ body {
   font-size: 1.2rem;
   outline: none;
   border: none;
-  border-bottom: 1px solid $dark-grey;
+  background-color: $cuaderno;
+  border-bottom: 3px solid black;
+  box-shadow: 0 2px 2px 1px rgba(grey, 0.2);
 }
 
 .todo__list {
   padding: 0;
   margin: 0;
   list-style: none;
+  box-shadow: 0 2px 2px 1px rgba(grey, 0.2);
 }
 
 .todo__list__item {
@@ -39,7 +42,11 @@ body {
   margin: 0;
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: $cuaderno;
+
+  &:last-child {
+    border: none;
+  }
 
   label {
     margin: 0 0 0 1rem;
@@ -54,8 +61,8 @@ body {
   position: absolute;
   right: 1.5rem;
   border: none;
-  background-color: #fff;
-  color: tomato;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(72, 61, 168);
 }
 
 .todo__footer {
@@ -74,9 +81,16 @@ body {
 }
 .todo__filter__btn {
   background-color: #fff;
-  border: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: 3px solid rgba(black, 0);
+  border-bottom: 3px solid rgba(black, 0);
   color: $black;
   padding: 0.5rem;
+
+  &--active {
+    border-bottom: 3px solid black;
+  }
   
   &:not(:first-child) {
     margin-left: 0.5rem;
